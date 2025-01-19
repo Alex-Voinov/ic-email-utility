@@ -35,6 +35,7 @@ const sendEmail = async (req, res) => {
     res.status(200).json({ message: 'Email sent successfully to yourself!' });
     console.log(123)
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to send email', details: error.stack });
   }
 };
