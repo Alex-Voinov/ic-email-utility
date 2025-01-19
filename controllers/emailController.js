@@ -12,12 +12,18 @@ const sendEmail = async (req, res) => {
     console.log(234)
     // Create a transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // Используем Gmail (можно изменить на другой сервис)
-      auth: {
-        user: process.env.EMAIL_USER, // Ваша почта
-        pass: process.env.EMAIL_PASS, // Ваш пароль приложения
-      },
-    });
+        host: 'smtp.gmail.com',
+        port: 587,  // Используйте 465 для SSL
+        secure: false,  // false для TLS, true для SSL
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+        tls: {
+          rejectUnauthorized: false,  // Чтобы избежать ошибок с SSL-соединением
+        },
+      });
+      
 
     // Email options
     const mailOptions = {
