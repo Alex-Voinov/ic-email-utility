@@ -11,9 +11,9 @@ const PORT = 5006;
 app.use(bodyParser.json());
 
 // Routes
-app.use('/api/email', emailRoutes);
+app.use('/api', emailRoutes);
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running`);
+    console.log(`Server running on port ${PORT}`);
 });

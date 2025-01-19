@@ -9,6 +9,7 @@ const sendEmail = async (req, res) => {
   }
 
   try {
+    console.log('123')
     // Create a transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail', // Используем Gmail (можно изменить на другой сервис)
