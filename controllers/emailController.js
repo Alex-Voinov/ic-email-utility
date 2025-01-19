@@ -9,6 +9,7 @@ const sendEmail = async (req, res) => {
   }
 
   try {
+    console.log(234)
     // Create a transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail', // Используем Gmail (можно изменить на другой сервис)
@@ -26,10 +27,13 @@ const sendEmail = async (req, res) => {
       text,                       // Текст письма
     };
 
+    console.log(mailOptions)
+
     // Send email
     await transporter.sendMail(mailOptions);
 
     res.status(200).json({ message: 'Email sent successfully to yourself!' });
+    console.log(123)
   } catch (error) {
     res.status(500).json({ error: 'Failed to send email', details: error.stack });
   }
