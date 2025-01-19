@@ -14,12 +14,14 @@ const sendEmail = async (req, res) => {
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 587,
-            secure: false, // Используется TLS, не SSL
+            secure: false,  // Использование STARTTLS
             auth: {
-                user: 'codelife.auntification@gmail.com',
-                pass: 'upxnpcredqrwfovi'
-            }
-        });
+              user: 'codelife.auntification@gmail.com',
+              pass: 'upxnpcredqrwfovi'
+            },
+            logger: true,  // Включить логирование
+            debug: true    // Включить подробное отладочное сообщение
+          });
 
 
 
