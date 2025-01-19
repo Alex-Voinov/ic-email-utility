@@ -2,14 +2,13 @@ const nodemailer = require('nodemailer');
 
 // Email sending controller
 const sendEmail = async (req, res) => {
-  const { to, subject, text } = req.body;
+  const { text } = req.body;
 
-  if (!to || !subject || !text) {
+  if (!text) {
     return res.status(400).json({ error: 'Please provide to, subject, and text fields.' });
   }
 
   try {
-    console.log('123')
     // Create a transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail', // Используем Gmail (можно изменить на другой сервис)
@@ -22,8 +21,6 @@ const sendEmail = async (req, res) => {
     // Email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to,
-      subject,
       text,
     };
 
