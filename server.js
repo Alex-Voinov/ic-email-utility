@@ -6,6 +6,8 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 // Обслуживание всех статических файлов из папки 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
