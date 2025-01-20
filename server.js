@@ -1,17 +1,22 @@
 require('dotenv').config();
 
-const http = require('http');
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3000;
 
-// Создаем сервер
-const server = http.createServer((req, res) => {
-  // Устанавливаем заголовки ответа
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-  // Отправляем HTML-контент
-  res.end('<html><body><h1>Привет</h1></body></html>');
+// Отправка файлов верстки на / 
+app.get('/', (req, res) => {
+  // Отправляем HTML файл, например, index.html
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Сервер будет слушать на порту 3000
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Сервер запущен на http://localhost:${PORT}`);
+// Ответ на /api/hi
+app.get('/api/hi', (req, res) => {
+  res.send('Привет');
+});
+
+// Запуск сервера
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
