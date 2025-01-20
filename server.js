@@ -1,19 +1,17 @@
 require('dotenv').config();
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const emailRoutes = require('./routes/emailRoutes');
+const http = require('http');
 
-const app = express();
-const PORT = 5006;
+// Создаем сервер
+const server = http.createServer((req, res) => {
+  // Устанавливаем заголовки ответа
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  // Отправляем HTML-контент
+  res.end('<html><body><h1>Привет</h1></body></html>');
+});
 
-// Middleware
-app.use(bodyParser.json());
-
-// Routes
-app.use('/api', emailRoutes);
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Сервер будет слушать на порту 3000
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Сервер запущен на http://localhost:${PORT}`);
 });
