@@ -20,6 +20,8 @@ const sendEmail = async ( text) => {
     text: text                    // Текст письма
   };
 
+  console.log(mailOptions)
+
   try {
     const info = await transporter.sendMail(mailOptions);
     return `Письмо отправлено: ${info.response}`;
