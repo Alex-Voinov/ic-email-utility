@@ -5,10 +5,12 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Отправка файлов верстки на / 
+// Обслуживание всех статических файлов из папки 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Отправка файла index.html при запросе на /
 app.get('/', (req, res) => {
-  // Отправляем HTML файл, например, index.html
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Ответ на /api/hi
