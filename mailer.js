@@ -20,7 +20,7 @@ const sendEmail = async ( text) => {
     text: text                    // Текст письма
   };
 
-  console.log(mailOptions)
+  console.log(transporter)
 
   try {
     const info = await transporter.sendMail(mailOptions);
